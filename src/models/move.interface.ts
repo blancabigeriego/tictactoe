@@ -1,6 +1,5 @@
 export interface Move {
   player: Player;
-  isStartingGame: boolean;
   coordinates: Coordinates
 }
 
