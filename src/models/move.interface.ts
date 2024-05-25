@@ -8,7 +8,7 @@ export enum Player {
   'Y' = 2
 }
 
-type ValidNumber = 1 | 2 | 3;
+export type ValidNumber = 0 | 1 | 2;
 
 export interface Coordinates {
   x: ValidNumber,
