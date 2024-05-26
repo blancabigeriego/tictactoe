@@ -14,6 +14,9 @@ export class TicTacToe {
 
     this.checkCell(move);
     this.setPlayerForNextMove();
+    if(this.checkIfLastMove()) {
+      this.resetGame();
+    }
     return 'valid move'
   }
 
@@ -34,5 +37,19 @@ export class TicTacToe {
 
   private checkCell(move: Move): void {
     this.board[move.coordinates.x][move.coordinates.y] = move.player;
+
+  }
+
+  private checkIfLastMove(): boolean {
+    return this.board.every(row => row.every(cell => cell !== null));
+  }
+
+  private resetGame(): void {
+    this.board = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ];
+    this.isXTurn = true;
   }
 }

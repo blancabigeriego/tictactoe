@@ -1,6 +1,6 @@
 import "jasmine";
 
-import { TicTacToe } from "./tictactoe";
+import {TicTacToe} from "./tictactoe";
 import {Move, Player} from "./models/move.interface";
 
 describe('Tictactoe', () => {
@@ -89,5 +89,24 @@ describe('Tictactoe', () => {
       [null, Player.X, null],
       [null, null, null]
     ]);
+  })
+  it('should check if all the cells are occupied after a move to reset game', () => {
+    const ticktacktoe = new TicTacToe();
+    ticktacktoe.isXTurn = false;
+    ticktacktoe.board = [
+      [Player.O, Player.O, Player.X],
+      [Player.X, null, Player.X],
+      [Player.O, Player.X, Player.O]
+    ];
+    const move: Move = {
+      player: Player.O,
+      coordinates: {
+        x: 1,
+        y: 1
+      }
+    };
+    const spy = spyOn(ticktacktoe as any, 'resetGame');
+    ticktacktoe.move(move);
+    expect(spy).toHaveBeenCalled()
   })
 })
