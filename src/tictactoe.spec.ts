@@ -109,4 +109,25 @@ describe('Tictactoe', () => {
     ticktacktoe.move(move);
     expect(spy).toHaveBeenCalled()
   })
+  it('should finish game when a player wins', () => {
+    const ticktacktoe = new TicTacToe();
+    ticktacktoe.isXTurn = false;
+    ticktacktoe.board = [
+      [Player.X, null, null],
+      [Player.X, Player.O, Player.X],
+      [Player.O, Player.X, Player.O]
+    ];
+    const spy = spyOn(ticktacktoe as any, 'resetGame');
+    const move: Move = {
+      player: Player.O,
+      coordinates: {
+        x: 0,
+        y: 2
+      }
+    };
+    ticktacktoe.move(move);
+
+    ticktacktoe.move(move);
+    expect(spy).toHaveBeenCalled()
+  })
 })
