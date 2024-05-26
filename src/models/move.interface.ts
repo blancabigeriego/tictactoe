@@ -5,7 +5,7 @@ export interface Move {
 
 export enum Player {
   'X' = 1,
-  'Y' = 2
+  'O' = 2
 }
 
 export type ValidNumber = 0 | 1 | 2;
